@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+
+
+  <!-- The core Firebase JS SDK is always required and must be listed first -->
+<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#config-web-app -->
+     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+
+
+  <script src="uiEmbelishment.js" type = "text/javascript"></script>
+  <script src="api-service.js" type = "text/javascript"></script>
+  <script src="scripts.js" type = "text/javascript"></script>
+  <script src="firebase-connection.js" type = "text/javascript"></script>
+
+
+  <link href="https://fonts.googleapis.com/css?family=Chivo:400,400i,700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="style.css">
+  <title>Druggle</title>
+</head>
+
+<body>
+<div class = "mainContainer">
+    <h1 id = "greeting" style = "text-align:center"></h1>
+
+    <p>1. Select a disease to research</p>
+  <div class = "panelContainer-row-buttons">
+    <div data-id = "alzheimer"class = "disease-button panel panel-floating-button panel-pill purple">
+        Alzheimer's
+    </div>
+    <div data-id = "hepatitis b" class = "disease-button panel panel-floating-button panel-pill green">
+        Hepatitis B
+    </div>
+    <div class = "panel panel-floating-button panel-pill " style="width:45px;height:45px; color:black">
+        ＋
+    </div>
+  </div>
+  <p>2. Search your chemical</p>
+  <div class = "panel panel-pill">
+      <form class = "searchBar" onsubmit = "formSubmit(event)">
+        <input id = "search-chemical" type = "text" placeholder="your chemicals here!" style="width:80%;" class ="noStyle"/>
+        <button  class ="noStyle"><span class="glyphicon glyphicon-search"></span></button>
+      </form>
+  </div>
+</div>
+<div id = "results" class = "results">
+
+</div>
+
+</body>
+</html>

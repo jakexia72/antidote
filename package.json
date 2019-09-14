@@ -1,0 +1,25 @@
+{
+  "name": "private",
+  "version": "1.0.0",
+  "description": "I hate GEORGE",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jakexia72/private.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jakexia72/private/issues"
+  },
+  "homepage": "https://github.com/jakexia72/private#readme",
+  "dependencies": {
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "firestore-export-import": "^0.2.7"
+  }
+}
