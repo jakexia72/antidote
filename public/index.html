@@ -20,7 +20,7 @@
   <script src="api-service.js" type = "text/javascript"></script>
   <script src="scripts.js" type = "text/javascript"></script>
   <script src="firebase-connection.js" type = "text/javascript"></script>
-
+  <script src="firebase-queries.js" type = "text/javascript"></script>
 
   <link href="https://fonts.googleapis.com/css?family=Chivo:400,400i,700&display=swap" rel="stylesheet">
 
@@ -34,6 +34,7 @@
     <h1 id = "greeting" style = "text-align:center"></h1>
 
     <p>1. Select a disease to research</p>
+
   <div class = "panelContainer-row-buttons">
     <div data-id = "alzheimer"class = "disease-button panel panel-floating-button panel-pill purple">
         Alzheimer's
@@ -45,13 +46,16 @@
         ＋
     </div>
   </div>
-  <p>2. Search your chemical</p>
-  <div class = "panel panel-pill">
-      <form class = "searchBar" onsubmit = "formSubmit(event)">
-        <input id = "search-chemical" type = "text" placeholder="your chemicals here!" style="width:80%;" class ="noStyle"/>
-        <button  class ="noStyle"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
+  <div id = "searchBarSection">
+    <p>2. Search your chemical</p>
+    <div class = "panel panel-pill">
+        <form id = "search" class = "searchBar">
+          <input id = "search-chemical" type = "text" placeholder="your chemicals here!" style="width:80%;" class ="noStyle"/>
+          <button  class ="noStyle"><span class="glyphicon glyphicon-search"></span></button>
+        </form>
+    </div>
   </div>
+
 </div>
 <div id = "results" class = "results">
 

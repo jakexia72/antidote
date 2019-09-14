@@ -1,7 +1,7 @@
 {
   "name": "private",
   "version": "1.0.0",
-  "description": "I hate GEORGE",
+  "description": "Find the cure youre looking for",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
