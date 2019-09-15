@@ -7,13 +7,8 @@ var apiservice = new apiService();
 
 $(document).ready(function(){
   $("#greeting").text("Good " + timeOfDay() +", Researcher");
-  $(".disease-button").click(function(){
-      //trigger something
-      // console.log(this.data('id'))
-      $('#greeting').text("Good " + timeOfDay() + ", " + $(this).text() + " Researcher");
-      changeCss('body','background:'+   diseaseColor[$(this).data('id')] +' !important;');
-      showSearchBar();
-  })
+
+
 
   $('#search').submit(function(e){
     e.preventDefault();
