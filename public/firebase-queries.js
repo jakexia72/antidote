@@ -7,6 +7,12 @@ chemicalRef.doc("asN1Dtb7l0FzzDrWQ79Z").get().then((snapshot) => {
   console.log(snapshot.data().four);
 });
 
+db.collection('Diseases').get().then((snapshot)=>{
+  snapshot.docs.forEach(doc => {
+    makeDiseaseButton(doc);
+  });
+});
+
 async function getRecord(chemical) {
   if(chemical.includes("CHEMBL")){
     return getByChembl(chemical);
