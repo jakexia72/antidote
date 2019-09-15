@@ -14,13 +14,21 @@ $(document).ready(function(){
       changeCss('body','background:'+   diseaseColor[$(this).data('id')] +' !important;');
       showSearchBar();
   })
+
   $('#search').submit(function(e){
-    console.log("RUN");
     e.preventDefault();
-    chemical = $("#search-chemical").val();
-    getRecord();
+    chemical = $("#search-chemical").val().toUpperCase();
+    console.log(chemical);
+    getRecord(chemical).then(function(data){
+      scrollToPoint("searchBarSection");
+      if(data == undefined){
+        $('#chemicalNameText').text('Sorry, we could not find your chemical 😕');
+      } else {
+        $('#chemicalNameText').text(data.Name);
+      }
+    });
   })
-})
+});
 
 function showSearchBar(){
   let searchBar = document.getElementById('searchBarSection');
@@ -64,3 +72,15 @@ function changeCss(className, classValue) {
     // append additional style
     classContainer.html('<style>' + className + ' {' + classValue + '}</style>');
 }
+
+
+function scrollToPoint(id){
+				var target = $('#' + id);
+				target = target.length ? target : $('[name=' + this.hash.slice(1) + ']');
+				if (target.length) {
+					$('html, body').animate({
+						scrollTop: target.offset().top
+					}, 800);
+					return false;
+				}
+  }

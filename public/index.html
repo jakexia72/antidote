@@ -32,8 +32,9 @@
 <body>
 <div class = "mainContainer">
     <h1 id = "greeting" style = "text-align:center"></h1>
+    <div class = "spacer"></div>
 
-    <p>1. Select a disease to research</p>
+    <h3>1. Select a disease to research</h3>
 
   <div class = "panelContainer-row-buttons">
     <div data-id = "alzheimer"class = "disease-button panel panel-floating-button panel-pill purple">
@@ -47,13 +48,17 @@
     </div>
   </div>
   <div id = "searchBarSection">
-    <p>2. Search your chemical</p>
+    <h3>2. Search your chemical</h3>
     <div class = "panel panel-pill">
         <form id = "search" class = "searchBar">
           <input id = "search-chemical" type = "text" placeholder="your chemicals here!" style="width:80%;" class ="noStyle"/>
           <button  class ="noStyle"><span class="glyphicon glyphicon-search"></span></button>
         </form>
     </div>
+  </div>
+  <div class = "spacer"></div>
+  <div id = "resultsSection">
+    <h3 id = "chemicalNameText"></h3>
   </div>
 
 </div>
