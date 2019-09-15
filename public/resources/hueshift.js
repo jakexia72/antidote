@@ -142,9 +142,10 @@ function hexToRGB(hex){
 function lighten(color){
   let hsl = rgbToHSL(color);
   console.log(hsl.l);
+  hsl.s = hsl.s * (0.5);
   hsl.l = hsl.l * (1.2);
   if (hsl.l == 0){
-    hsl.l = 0.9;
+    hsl.l = 0.8;
   }
   console.log(hsl.l);
   return hslToRGB(hsl);

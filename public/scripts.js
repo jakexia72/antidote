@@ -1,16 +1,10 @@
-var diseaseColor = {
-  "alzheimer" : "#F3C3FF",
-  "hepatitis b" : "#90EAC8"
-}
-
 var apiservice = new apiService();
+var diseaseBeingSearched;
+var globalColor;
 var spellCheckResult = '';
 
 $(document).ready(function(){
   $("#greeting").text("Good " + timeOfDay() +", Researcher");
-
-
-
   $('#search').submit(function(e){
     e.preventDefault();
     chemical = $("#search-chemical").val();
@@ -20,11 +14,18 @@ $(document).ready(function(){
       if(data == undefined){
         $('#chemicalNameText').text('Sorry, we could not find your chemical 😕');
       } else {
-        $('#chemicalNameText').text(data.Name);
+        $('#chemicalNameText').text(data["Name"] + "'s likeliness to cure " + diseaseBeingSearched.replace('-',' '));
+        produceResults(data);
       }
     });
   })
 });
+
+function produceResults(data){
+  makeConfidenceScoreChart(data["bc_comb_score"], "scoreDonut-total", "Overall",globalColor);
+  makeConfidenceScoreChart(data["bc_img_score"], "scoreDonut-images", "Structural",globalColor);
+  makeConfidenceScoreChart(data["bc_feature_score"], "scoreDonut-features", "Characteristic",globalColor);
+}
 
 function showSearchBar(){
   let searchBar = document.getElementById('searchBarSection');
@@ -41,7 +42,7 @@ function showSearchBar(){
 //      });
 // }
 function toggleHiddenInfo(index) {
-    if (hiddenInfos[index] != undefined) { 
+    if (hiddenInfos[index] != undefined) {
       //preventing crash
         if (hiddenInfos[index].style.maxHeight) {
             hiddenInfos[index].style.maxHeight = null;

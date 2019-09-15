@@ -5,13 +5,13 @@ class apiService {
     constructor() {
       this.myHeaders.append('Content-Type', 'text/json');
       // Enter Azure API Subscription Key here
-      this.myHeaders.append('Ocp-Apim-Subscription-Key', '');
+      this.myHeaders.append('Ocp-Apim-Subscription-Key', '7665726594074296bcfea3d66a4a4288');
     }
 
     async getChemicalData(chemblID)
     {
       let response = await fetch('https://www.ebi.ac.uk/chembl/glados-es/chembl_molecule/_doc/' + chemblID);
-      let data = await response.json()
+      let data = await response.json();
       return data;
     }
 

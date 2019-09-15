@@ -9,11 +9,14 @@
 
 
   <!-- The core Firebase JS SDK is always required and must be listed first -->
-<script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/6.6.1/firebase-app.js"></script>
 
-<!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#config-web-app -->
-     <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+  <!-- TODO: Add SDKs for Firebase products that you want to use
+  https://firebase.google.com/docs/web/setup#config-web-app -->
+  <script src="https://www.gstatic.com/firebasejs/6.3.4/firebase-firestore.js"></script>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <script src="resources/chartjsPlugin.js" type = "text/javascript"></script>
 
   <script src="resources/hueshift.js" type = "text/javascript"></script>
   <script src="uiEmbelishment.js" type = "text/javascript"></script>
@@ -31,36 +34,52 @@
 </head>
 
 <body>
-<div class = "mainContainer">
+  <div class = "mainContainer">
     <h1 id = "greeting" style = "text-align:center"></h1>
     <div class = "spacer"></div>
 
-    <h3>1. Select a disease to research</h3>
+    <h3 style = "text-align:center;">1. Select a disease to research</h3>
 
-  <div id = "disease-buttons" class = "panelContainer-row-buttons">
-    <div class = "panel panel-floating-button panel-pill " style="width:45px;height:45px; color:black">
+    <div id = "disease-buttons" class = "panelContainer-row-buttons">
+      <div class = "panel panel-floating-button panel-pill " style="width:45px;height:45px; color:black">
         ＋
+      </div>
     </div>
-  </div>
-  <div id = "searchBarSection">
-    <h3>2. Search your chemical</h3>
-    <div class = "panel panel-pill">
+    <div class = "spacer"></div>
+    <div class = "spacer"></div>
+
+    <div id = "searchBarSection">
+      <h3 style = "text-align:center;">2. Search your chemical</h3>
+      <div class = "panel panel-pill">
         <form id = "search" class = "searchBar">
           <input id = "search-chemical" type = "text" placeholder="your chemicals here!" style="width:80%;" class ="noStyle"/>
           <button  class ="noStyle"><span class="glyphicon glyphicon-search"></span></button>
         </form>
+      </div>
     </div>
-  </div>
-  <div class = "spacer"></div>
-  <div id = "resultsSection">
-    <h3 id = "chemicalNameText"></h3>
-    <p id="spellCheckText"></p>
-  </div>
+    <div class = "spacer"></div>
+    <div id = "resultsSection">
+      <h3 id = "chemicalNameText">TEST</h3>
+      <p id="spellCheckText"></p>
+      <div class = "panelContainer-col">
+        <div class = "panelContainer-row">
+          <div class = "panel">
+            <canvas id="scoreDonut-total" width="20%" height="20%"></canvas>
+          </div>
+          <div class = "panel">
+            <canvas id="scoreDonut-images" width="20%" height="20%"></canvas>
+          </div>
+          <div class = "panel">
+            <canvas id="scoreDonut-features" width="20%" height="20%"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
 
-</div>
-<div id = "results" class = "results">
+  </div>
+  <div id = "results" class = "results">
 
-</div>
+  </div>
 
 </body>
 </html>

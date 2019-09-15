@@ -4,7 +4,6 @@ chemicalRef.doc("asN1Dtb7l0FzzDrWQ79Z").get().then((snapshot) => {
   let image = document.createElement('img');
   $(image).attr("src",snapshot.data().image);
   $('#results').append(image);
-  console.log(snapshot.data().four);
 });
 
 db.collection('Diseases').get().then((snapshot)=>{
