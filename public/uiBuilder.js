@@ -24,64 +24,204 @@ function makeDiseaseButton(doc){
       globalColor = $(this).data('id');
       showSearchBar();
       console.log(diseaseBeingSearched);
+      hideResults();
+      clearUI();
   })
+}
+
+function makeSimilarPanel(chemblID, img, fea, url){
+  let ov = (parseFloat(img) + parseFloat(fea))/2;
+
+  let panel = document.createElement('div');
+  $(panel).addClass("panel");
+  $(panel).css('max-width', "220px")
+
+  let newId = document.createElement('h4');
+  $(newId).text(chemblID);
+
+  let desc = document.createElement('p');
+  $(desc).text("Overall Confidence: " + (ov * 100).toFixed(2) + "%");
+
+  let image = document.createElement('img');
+  $(image).css("height", "200px");
+  $(image).attr("src",url);
+
+  $(panel).append(newId);
+  $(panel).append(image);
+  $(panel).append(desc);
+
+  $('#similarResults').append(panel);
 }
 
 
 
-  function makeConfidenceScoreChart(score, id, scoreType, color){
-    console.log(scoreType);
-    let confidenceScoreChart;
-    let ctx = document.getElementById(id).getContext('2d');
+function makeConfidenceScoreChartOverall(score, id, scoreType, color){
+  console.log(scoreType);
+  let confidenceScoreChartOverall;
+  let ctx = document.getElementById(id).getContext('2d');
 
-    let notConfident = 1 - score;
-    confidenceScoreChart = new Chart(ctx, {
-      type:'doughnut',
-      data: {
-        labels: ["", ""],
-        datasets: [{
-          label: 'time',
-          backgroundColor: ["lightgrey",color],
-          data: [notConfident,score]
-        }]
+  let notConfident = 1 - score;
+  confidenceScoreChartOverall = new Chart(ctx, {
+    type:'doughnut',
+    data: {
+      labels: ["", ""],
+      datasets: [{
+        label: 'time',
+        backgroundColor: ["lightgrey",color],
+        data: [notConfident,score]
+      }]
+    },
+    options: {
+      cutoutPercentage: 90,
+      responsive: true,
+      legend:{
+        display: false
       },
-      options: {
-        cutoutPercentage: 90,
-        responsive: true,
-        legend:{
-          display: false
-        },
-        tooltips: {
-          enabled: false
-        },
-        hover: {mode: null},
-        plugins:{
-          doughnutlabel:{
-            labels: [
-            {
-              text: scoreType,
-              font: {
-                size: '50'
-              },
-              color: 'grey'
+      tooltips: {
+        enabled: false
+      },
+      hover: {mode: null},
+      plugins:{
+        doughnutlabel:{
+          labels: [
+          {
+            text: scoreType,
+            font: {
+              size: '50'
             },
-            {
-              text: (100 * score).toFixed(2) + "%",
-              font: {
-                size: '100',
-                weight: 'bold'
-              },
-              color: 'black'
+            color: 'grey'
+          },
+          {
+            text: (100 * score).toFixed(2) + "%",
+            font: {
+              size: '100',
+              weight: 'bold'
             },
-            {
-              text: "Confidence",
-              font: {
-                size: '50'
-              },
-              color: 'grey'
-            }]
-          }
+            color: 'black'
+          },
+          {
+            text: "Confidence",
+            font: {
+              size: '50'
+            },
+            color: 'grey'
+          }]
         }
       }
-    })
-  }
+    }
+  })
+}
+
+function makeConfidenceScoreChartImg(score, id, scoreType, color){
+  console.log(scoreType);
+  let confidenceScoreChartImg;
+  let ctx = document.getElementById(id).getContext('2d');
+
+  let notConfident = 1 - score;
+  confidenceScoreChartImg = new Chart(ctx, {
+    type:'doughnut',
+    data: {
+      labels: ["", ""],
+      datasets: [{
+        label: 'time',
+        backgroundColor: ["lightgrey",color],
+        data: [notConfident,score]
+      }]
+    },
+    options: {
+      cutoutPercentage: 90,
+      responsive: true,
+      legend:{
+        display: false
+      },
+      tooltips: {
+        enabled: false
+      },
+      hover: {mode: null},
+      plugins:{
+        doughnutlabel:{
+          labels: [
+          {
+            text: scoreType,
+            font: {
+              size: '50'
+            },
+            color: 'grey'
+          },
+          {
+            text: (100 * score).toFixed(2) + "%",
+            font: {
+              size: '100',
+              weight: 'bold'
+            },
+            color: 'black'
+          },
+          {
+            text: "Confidence",
+            font: {
+              size: '50'
+            },
+            color: 'grey'
+          }]
+        }
+      }
+    }
+  })
+}
+
+function makeConfidenceScoreChartFeatures(score, id, scoreType, color){
+  console.log(scoreType);
+  let confidenceScoreChartFeatures;
+  let ctx = document.getElementById(id).getContext('2d');
+
+  let notConfident = 1 - score;
+  confidenceScoreChartFeatures = new Chart(ctx, {
+    type:'doughnut',
+    data: {
+      labels: ["", ""],
+      datasets: [{
+        label: 'time',
+        backgroundColor: ["lightgrey",color],
+        data: [notConfident,score]
+      }]
+    },
+    options: {
+      cutoutPercentage: 90,
+      responsive: true,
+      legend:{
+        display: false
+      },
+      tooltips: {
+        enabled: false
+      },
+      hover: {mode: null},
+      plugins:{
+        doughnutlabel:{
+          labels: [
+          {
+            text: scoreType,
+            font: {
+              size: '50'
+            },
+            color: 'grey'
+          },
+          {
+            text: (100 * score).toFixed(2) + "%",
+            font: {
+              size: '100',
+              weight: 'bold'
+            },
+            color: 'black'
+          },
+          {
+            text: "Confidence",
+            font: {
+              size: '50'
+            },
+            color: 'grey'
+          }]
+        }
+      }
+    }
+  })
+}

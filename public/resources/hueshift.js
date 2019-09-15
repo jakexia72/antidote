@@ -145,7 +145,7 @@ function lighten(color){
   hsl.s = hsl.s * (0.5);
   hsl.l = hsl.l * (1.2);
   if (hsl.l == 0){
-    hsl.l = 0.8;
+    hsl.l = 0.7;
   }
   console.log(hsl.l);
   return hslToRGB(hsl);

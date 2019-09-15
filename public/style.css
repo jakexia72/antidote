@@ -21,6 +21,17 @@ body{
   font-weight: bold;
 }
 
+#resultsSection{
+  opacity: 0;
+  -webkit-transition: 0.6s cubic-bezier(0.785, 0.135, 0.15, 0.86);
+  -moz-transition: .5s ease;
+  -o-transition: .5s ease;
+  -ms-transition: .5s ease;
+  transition: .5s ease;
+}
+.green{
+  color: #00cc78;
+}
 #searchBarSection{
   box-sizing: border-box;
   opacity: 0;

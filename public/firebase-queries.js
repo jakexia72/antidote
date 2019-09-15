@@ -1,10 +1,6 @@
 const chemicalRef = db.collection("Chemicals")
 
-chemicalRef.doc("asN1Dtb7l0FzzDrWQ79Z").get().then((snapshot) => {
-  let image = document.createElement('img');
-  $(image).attr("src",snapshot.data().image);
-  $('#results').append(image);
-});
+
 
 db.collection('Diseases').get().then((snapshot)=>{
   snapshot.docs.forEach(doc => {
@@ -12,20 +8,48 @@ db.collection('Diseases').get().then((snapshot)=>{
   });
 });
 
+
+
 async function getRecord(chemical) {
-  if(chemical.includes("CHEMBL")){
-    return getByChembl(chemical);
+  if(chemical.toUpperCase().includes("CHEMBL")){
+    return getByChembl(chemical.toUpperCase());
   } else {
-    spellCheck(chemical)
-    return getByName(chemical);
+    return getByName(chemical.toUpperCase());
   }
 }
 
 async function getByName(chemical){
-  let data = await chemicalRef.where('Name', '==', chemical).get();
-  if(data.docs[0] != undefined){
-    return data.docs[0].data();
-  }
+
+  let str = chemical;
+  let newstr = await apiservice.getSpellCheck(str);
+  console.log(newstr);
+
+    for (flaggedToken in newstr.flaggedTokens) {
+      let bestSuggestion = "";
+      let highestScore = 0;
+
+      for (item in newstr.flaggedTokens[flaggedToken].suggestions) {
+        if (newstr.flaggedTokens[flaggedToken].suggestions[item].score > highestScore) {
+          bestSuggestion = newstr.flaggedTokens[flaggedToken].suggestions[item].suggestion;
+        }
+      }
+      str = str.replace(newstr.flaggedTokens[flaggedToken].token, bestSuggestion);
+      globalSpellCheckResult = spellCheckResult;
+      console.log(spellCheckResult);
+
+      // if (chemical.toLowerCase() != str.toLowerCase()){
+      //   console.log("str: " + str);
+      //   $('#spellCheckText').text(chemical + " was not found, showing results for " + str);
+      //
+    }
+
+    let data = await chemicalRef.where('Name', '==', str.toUpperCase()).get();
+    if(data.docs[0] != undefined){
+      if (chemical.toLowerCase() != str.toLowerCase()){
+        $('#spellCheckText').text(chemical + " was not found, showing results for " + str);
+      }
+      return data.docs[0].data();
+    }
 }
 
 async function getByChembl(chemical){
