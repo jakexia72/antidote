@@ -11,6 +11,7 @@ async function getRecord(chemical) {
   if(chemical.includes("CHEMBL")){
     return getByChembl(chemical);
   } else {
+    spellCheck(chemical)
     return getByName(chemical);
   }
 }
