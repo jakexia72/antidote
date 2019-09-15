@@ -55,7 +55,7 @@ console.log(diseaseBeingSearched);
 
   }
   confidenceScoreFeatures = data[shortFormDisease + '_yes_tab'];
-  confidenceScoreImg = data[shortFormDisease + '_yes_tab'];
+  confidenceScoreImg = data[shortFormDisease + '_yes_img'];
   confidenceScoreTotal = (parseFloat(confidenceScoreImg) + parseFloat(confidenceScoreFeatures))/2;
 
   if(confidenceScoreTotal > 0.5){
