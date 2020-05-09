@@ -19,9 +19,7 @@ cd your/path/here
 Install all dependencies using [npm](https://www.npmjs.com/):
 
 ```
-npm i ejs
-npm i express
-npm i firestore-export-import
+npm i 
 ```
 
 Use the following command to start the server:
